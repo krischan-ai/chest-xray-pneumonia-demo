@@ -119,6 +119,11 @@ streamlit run app.py
 
 ### 🚀 Version Evolution & Refactoring
 
+#### ✨ [v2.1 Latest Update] - Explainable AI (XAI) & Lesion Heatmap Visualization
+* **Grad-CAM Integration**: Shattered the "black-box" limitation of standard CNNs. By computing the gradients of the final convolutional layer (e.g., `block5_conv3`), the system dynamically generates Class Activation Heatmaps in real-time.
+* **Enhancing Clinical Trust**: Visually highlights the exact lung opacities driving the AI's "Pneumonia" prediction with red overlays. This provides radiologists with an intuitive second opinion for cross-validation and ensures the model is learning true pathological features rather than spurious correlations.
+* **New Tech Stack**: OpenCV (Color mapping and channel processing), Matplotlib.
+
 #### [v2.0] - Local Model Fine-tuning & Deployment Loop
 In the initial phase (v1.0), this demo utilized a lightweight pre-trained model from Hugging Face for rapid prototyping. To gain deeper control over training details and optimize performance on specific medical datasets, version 2.0 refactored the core engine:
 
@@ -127,11 +132,6 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 ![VGG16 Fine-tuning Architecture](assets/model_architecture.png)
 
 * **Inference Optimization**: To ensure a smooth user experience on standard personal computers, `tensorflow-cpu` was specified in the environment configuration, achieving millisecond-level rapid inference without relying on a GPU.
-
-#### ✨ [v2.1 Latest Update] - Explainable AI (XAI) & Lesion Heatmap Visualization
-* **Grad-CAM Integration**: Shattered the "black-box" limitation of standard CNNs. By computing the gradients of the final convolutional layer (e.g., `block5_conv3`), the system dynamically generates Class Activation Heatmaps in real-time.
-* **Enhancing Clinical Trust**: Visually highlights the exact lung opacities driving the AI's "Pneumonia" prediction with red overlays. This provides radiologists with an intuitive second opinion for cross-validation and ensures the model is learning true pathological features rather than spurious correlations.
-* **New Tech Stack**: OpenCV (Color mapping and channel processing), Matplotlib.
 
 > 💡 **Developer's Reflection**
 >
