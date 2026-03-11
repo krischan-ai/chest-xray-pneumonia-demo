@@ -4,8 +4,6 @@ from PIL import Image
 import numpy as np
 import os
 
-# 代理配置已移除
-
 # 强制使用CPU
 device = torch.device('cpu')
 
