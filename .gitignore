@@ -1,34 +1,6 @@
-# Python
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# IDE
-.vscode/
-.idea/
-
-# OS
+*.pyc
 .DS_Store
-Thumbs.db
-
-# Virtual environment
 venv/
 env/
-
-# Test files
-*.test.py
-
-# Model files (if any)
-models/
-
-# Log files
-*.log
-
-# Temporary files
-*.tmp
-*.temp
+.vscode/
