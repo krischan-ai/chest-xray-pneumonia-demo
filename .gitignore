@@ -4,3 +4,7 @@ __pycache__/
 venv/
 env/
 .vscode/
+debug.log
+my_chest_xray_model.h5
+upload_readme_v2.py
+upload_to_huggingface_v3.py
