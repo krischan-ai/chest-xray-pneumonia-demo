@@ -1,5 +1,8 @@
+
+
 # Chest X-ray Pneumonia Assistant 🫁
 
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Live_Demo-blue)](https://huggingface.co/spaces/krischan-ai/Chest-Xray-Pneumonia-Assistant)
 [![Kaggle](https://img.shields.io/badge/Kaggle-Model_Training_Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/dingzhendinner/chest-x-ray-images)
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16+-orange.svg)](https://www.tensorflow.org/)
@@ -57,6 +60,12 @@
 4. **隐私保护**：全本地运行，图片数据不上云，严格保护数据隐私。
 
 ### 💻 安装与运行
+
+#### 🌟 在线体验 (Live Demo)
+您无需在本地配置任何环境，直接点击下方链接即可在浏览器中体验完整功能：
+👉 **https://huggingface.co/spaces/krischan-ai/Chest-Xray-Pneumonia-Assistant**
+
+*(如果您希望在本地运行，请参考以下步骤：)*
 
 #### 1. 安装依赖
 建议在虚拟环境中运行。
@@ -138,6 +147,12 @@ This refactoring not only enhanced the demo's accuracy but also deepened my foun
 4. **Privacy Protection**: Runs entirely locally, no image data is uploaded to the cloud, strictly protecting data privacy.
 
 ### 💻 Installation & Usage
+
+#### 🌟 Live Demo
+You can experience the full functionality directly in your browser without any local environment setup:
+👉 **https://huggingface.co/spaces/krischan-ai/Chest-Xray-Pneumonia-Assistant**
+
+*(If you prefer to run it locally, please follow the steps below:)*
 
 #### 1. Install Dependencies
 It is recommended to run in a virtual environment.

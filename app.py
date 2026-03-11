@@ -109,7 +109,7 @@ def main():
             with col1:
                 # 显示上传的图像
                 image = Image.open(uploaded_file)
-                st.image(image, caption="上传的X光片", use_container_width=True)
+                st.image(image, caption="上传的X光片", width=600)
             
             with col2:
                 # 自动检测，不需要点击按钮
