@@ -1,4 +1,14 @@
-
+---
+title: Chest X-ray Pneumonia Assistant
+emoji: 🫁
+colorFrom: blue
+colorTo: purple
+sdk: streamlit
+sdk_version: "1.36.0"
+python_version: "3.10"
+app_file: app.py
+pinned: false
+---
 
 # Chest X-ray Pneumonia Assistant 🫁
 
@@ -36,6 +46,11 @@
 
 * **推理性能优化**：为了保证在普通个人电脑上的流畅运行体验，环境配置中指定了 `tensorflow-cpu`，在不依赖 GPU 的情况下依然能实现毫秒级的快速推断。
 
+#### ✨ [v2.1 最新升级] - 可解释性 AI (XAI) 与病灶热力图可视化
+* **Grad-CAM 算法集成**：彻底打破深度学习的“黑盒”限制。系统通过计算 VGG16 最终卷积层（如 `block5_conv3`）的梯度，实时动态生成类激活热力图 (Heatmap)。
+* **临床信任度提升**：以红色高亮直观标注 AI 做出“肺炎”预测时所关注的肺部浑浊区域。这不仅能辅助放射科医生进行直观的交叉验证，更能有效验证模型是否真正学到了病理特征，而非虚假相关性（Spurious Correlations）。
+* **新增技术栈**：OpenCV (图像通道处理与彩色映射), Matplotlib。
+
 > 💡 **开发者笔记 / 技术复盘**
 >
 > 在这次从数据预处理、模型训练到最终 Web 部署的完整闭环中，我深刻体会到了**迁移学习 (Transfer Learning)** 在医疗影像等相对小样本数据集上的巨大价值。
@@ -49,6 +64,8 @@
 ![Confusion Matrix on Test Set](assets/confusion_matrix.png)
 
 这次重构不仅提升了 Demo 的准确度，也让我对 AI 算法在医疗场景下的工程落地有了更直观、更底层的认知。
+
+关于 v2.1 的思考：在纯粹的端到端评估后，我意识到医疗 AI 真正落地的最大阻碍是"信任鸿沟"。引入 Grad-CAM 是我主动向临床实用性迈出的一步。看到热力图精准覆盖在测试集图片的肺部浑浊处，而非图片边缘的字母标记上，这比单纯达到 90% 的 AUC 更让我确信模型的鲁棒性。
 
 ![ROC Curve and AUC](assets/roc_curve.png)
 
@@ -81,7 +98,7 @@ streamlit run app.py
 ### 🔮 未来计划
 
 - [ ] **消除数据偏差 (Mitigating Data Bias)**：整合国内本土或亚洲人群的医疗影像标注数据，进行下一阶段的模型 Fine-tuning，以降低当前开源数据集（主要源于欧美医疗系统）带来的地域与种族特征偏差。
-- [ ] **可解释性 AI (Explainable AI / XAI)**：探索集成 LIME 或手写基于 Keras 的 Grad-CAM 算法，恢复并优化模型的可解释性（热力图）功能，辅助医生理解 AI 的空间特征决策逻辑。
+- [x] **可解释性 AI (Explainable AI / XAI)**：[已于 v2.1 版本完成实现] 探索集成 LIME 或手写基于 Keras 的 Grad-CAM 算法，恢复并优化模型的可解释性（热力图）功能，辅助医生理解 AI 的空间特征决策逻辑。
 - [ ] **多分类扩展 (Multi-class Extension)**：扩展多分类任务，将检测范围从单一的肺炎扩充至包含肺结核、气胸等多种肺部病变的综合筛查。
 
 ### ⚖️ 伦理与免责声明
@@ -123,6 +140,11 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 
 * **Inference Optimization**: To ensure a smooth user experience on standard personal computers, `tensorflow-cpu` was specified in the environment configuration, achieving millisecond-level rapid inference without relying on a GPU.
 
+#### ✨ [v2.1 Latest Update] - Explainable AI (XAI) & Lesion Heatmap Visualization
+* **Grad-CAM Integration**: Shattered the "black-box" limitation of standard CNNs. By computing the gradients of the final convolutional layer (e.g., `block5_conv3`), the system dynamically generates Class Activation Heatmaps in real-time.
+* **Enhancing Clinical Trust**: Visually highlights the exact lung opacities driving the AI's "Pneumonia" prediction with red overlays. This provides radiologists with an intuitive second opinion for cross-validation and ensures the model is learning true pathological features rather than spurious correlations.
+* **New Tech Stack**: OpenCV (Color mapping and channel processing), Matplotlib.
+
 > 💡 **Developer's Reflection**
 >
 > Through this complete end-to-end cycle—from data preprocessing and model training to final web deployment—I gained profound insights into the immense value of **Transfer Learning** on relatively small medical imaging datasets.
@@ -136,6 +158,8 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 ![Confusion Matrix on Test Set](assets/confusion_matrix.png)
 
 This refactoring not only enhanced the demo's accuracy but also deepened my foundational understanding of engineering and deploying AI algorithms in practical medical scenarios.
+
+Reflection on v2.1: After pure end-to-end evaluation, I realized the biggest hurdle for medical AI is the "trust gap". Integrating Grad-CAM was a proactive step toward clinical viability. Seeing the heatmaps accurately highlight lung opacities rather than peripheral image markers gave me more confidence in the model's robustness than merely achieving a 90% AUC.
 
 ![ROC Curve and AUC](assets/roc_curve.png)
 
@@ -168,7 +192,7 @@ streamlit run app.py
 ### 🔮 Future Plans
 
 - [ ] **Mitigating Data Bias**: Integrate local or broader Asian medical imaging datasets for the next phase of fine-tuning, aiming to reduce regional and demographic biases inherent in the current open-source dataset (which is primarily Western-centric).
-- [ ] **Explainable AI (XAI)**: Explore the integration of LIME or custom Keras-based Grad-CAM algorithms to restore and optimize the model's interpretability (heatmaps), assisting medical professionals in understanding the AI's spatial decision-making logic.
+- [x] **Explainable AI (XAI)**: [Successfully implemented in v2.1] Explore the integration of LIME or custom Keras-based Grad-CAM algorithms to restore and optimize the model's interpretability (heatmaps), assisting medical professionals in understanding the AI's spatial decision-making logic.
 - [ ] **Multi-class Extension**: Expand the binary classification task to a multi-class framework, broadening the detection scope to include comprehensive screening for various lung lesions such as tuberculosis and pneumothorax.
 
 ### ⚖️ Ethical Statement & Disclaimer
