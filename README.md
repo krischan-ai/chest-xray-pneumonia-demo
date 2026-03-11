@@ -24,7 +24,7 @@ pinned: false
 **Chest X-ray Pneumonia Assistant** 是一个基于 Python 和 Streamlit 构建的医疗影像辅助 Web 演示应用。该项目通过部署**本地微调 (Fine-tuned) 的深度学习模型**，展示了 AI 在胸部 X 光片肺炎特征检测中的应用潜力。
 *(注：本应用仅供教育、学术交流与研究演示使用，非临床诊断工具。)*
 
-![App UI Screenshot](assets/app_screenshot.jpeg)
+![App UI Screenshot](assets/app_screenshot.png)
 
 ### 🛠️ 技术栈
 
@@ -118,7 +118,7 @@ streamlit run app.py
 **Chest X-ray Pneumonia Assistant** is an educational web application built with Python and Streamlit. By deploying a **custom fine-tuned deep learning model**, this project demonstrates the potential of AI in detecting pneumonia features from chest X-ray images.
 *(Note: This application is strictly for educational, academic, and research demonstration purposes. It is not a clinical diagnostic tool.)*
 
-![App UI Screenshot](assets/app_screenshot.jpeg)
+![App UI Screenshot](assets/app_screenshot.png)
 
 ### 🛠️ Technical Implementation
 
