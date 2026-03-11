@@ -147,7 +147,7 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 
 This refactoring not only enhanced the demo's accuracy but also deepened my foundational understanding of engineering and deploying AI algorithms in practical medical scenarios.
 
-Reflection on v2.1: After pure end-to-end evaluation, I realized the biggest hurdle for medical AI is the "trust gap". Integrating Grad-CAM was a proactive step toward clinical viability. Seeing the heatmaps accurately highlight lung opacities rather than peripheral image markers gave me more confidence in the model's robustness than merely achieving a 90% AUC.
+> Reflection on v2.1: After pure end-to-end evaluation, I realized the biggest hurdle for medical AI is the "trust gap". Integrating Grad-CAM was a proactive step toward clinical viability. Seeing the heatmaps accurately highlight lung opacities rather than peripheral image markers gave me more confidence in the model's robustness than merely achieving a 90% AUC.
 
 ![ROC Curve and AUC](assets/roc_curve.png)
 
