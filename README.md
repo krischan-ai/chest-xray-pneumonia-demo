@@ -25,6 +25,11 @@
 
 ### 🚀 版本演进与技术重构
 
+#### ✨ [v2.1 最新升级] - 可解释性 AI (XAI) 与病灶热力图可视化
+* **Grad-CAM 算法集成**：彻底打破深度学习的“黑盒”限制。系统通过计算 VGG16 最终卷积层（如 `block5_conv3`）的梯度，实时动态生成类激活热力图 (Heatmap)。
+* **临床信任度提升**：以红色高亮直观标注 AI 做出“肺炎”预测时所关注的肺部浑浊区域。这不仅能辅助放射科医生进行直观的交叉验证，更能有效验证模型是否真正学到了病理特征，而非虚假相关性（Spurious Correlations）。
+* **新增技术栈**：OpenCV (图像通道处理与彩色映射), Matplotlib。
+
 #### [v2.0] - 本地模型 Fine-tuning 与部署闭环
 在项目的初始阶段（v1.0），本 Demo 采用了 Hugging Face 上的轻量级预训练模型进行快速原型开发。为了进一步掌控模型的训练细节并优化在特定医疗数据集上的表现，v2.0 版本进行了核心引擎的重构：
 
@@ -33,11 +38,6 @@
 ![VGG16 Fine-tuning Architecture](assets/model_architecture.png)
 
 * **推理性能优化**：为了保证在普通个人电脑上的流畅运行体验，环境配置中指定了 `tensorflow-cpu`，在不依赖 GPU 的情况下依然能实现毫秒级的快速推断。
-
-#### ✨ [v2.1 最新升级] - 可解释性 AI (XAI) 与病灶热力图可视化
-* **Grad-CAM 算法集成**：彻底打破深度学习的“黑盒”限制。系统通过计算 VGG16 最终卷积层（如 `block5_conv3`）的梯度，实时动态生成类激活热力图 (Heatmap)。
-* **临床信任度提升**：以红色高亮直观标注 AI 做出“肺炎”预测时所关注的肺部浑浊区域。这不仅能辅助放射科医生进行直观的交叉验证，更能有效验证模型是否真正学到了病理特征，而非虚假相关性（Spurious Correlations）。
-* **新增技术栈**：OpenCV (图像通道处理与彩色映射), Matplotlib。
 
 > 💡 **开发者笔记 / 技术复盘**
 >
@@ -53,7 +53,7 @@
 
 这次重构不仅提升了 Demo 的准确度，也让我对 AI 算法在医疗场景下的工程落地有了更直观、更底层的认知。
 
-关于 v2.1 的思考：在纯粹的端到端评估后，我意识到医疗 AI 真正落地的最大阻碍是"信任鸿沟"。引入 Grad-CAM 是我主动向临床实用性迈出的一步。看到热力图精准覆盖在测试集图片的肺部浑浊处，而非图片边缘的字母标记上，这比单纯达到 90% 的 AUC 更让我确信模型的鲁棒性。
+> 关于 v2.1 的思考：在纯粹的端到端评估后，我意识到医疗 AI 真正落地的最大阻碍是"信任鸿沟"。引入 Grad-CAM 是我主动向临床实用性迈出的一步。看到热力图精准覆盖在测试集图片的肺部浑浊处，而非图片边缘的字母标记上，这比单纯达到 90% 的 AUC 更让我确信模型的鲁棒性。
 
 ![ROC Curve and AUC](assets/roc_curve.png)
 
@@ -119,6 +119,11 @@ streamlit run app.py
 
 ### 🚀 Version Evolution & Refactoring
 
+#### ✨ [v2.1 Latest Update] - Explainable AI (XAI) & Lesion Heatmap Visualization
+* **Grad-CAM Integration**: Shattered the "black-box" limitation of standard CNNs. By computing the gradients of the final convolutional layer (e.g., `block5_conv3`), the system dynamically generates Class Activation Heatmaps in real-time.
+* **Enhancing Clinical Trust**: Visually highlights the exact lung opacities driving the AI's "Pneumonia" prediction with red overlays. This provides radiologists with an intuitive second opinion for cross-validation and ensures the model is learning true pathological features rather than spurious correlations.
+* **New Tech Stack**: OpenCV (Color mapping and channel processing), Matplotlib.
+
 #### [v2.0] - Local Model Fine-tuning & Deployment Loop
 In the initial phase (v1.0), this demo utilized a lightweight pre-trained model from Hugging Face for rapid prototyping. To gain deeper control over training details and optimize performance on specific medical datasets, version 2.0 refactored the core engine:
 
@@ -127,11 +132,6 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 ![VGG16 Fine-tuning Architecture](assets/model_architecture.png)
 
 * **Inference Optimization**: To ensure a smooth user experience on standard personal computers, `tensorflow-cpu` was specified in the environment configuration, achieving millisecond-level rapid inference without relying on a GPU.
-
-#### ✨ [v2.1 Latest Update] - Explainable AI (XAI) & Lesion Heatmap Visualization
-* **Grad-CAM Integration**: Shattered the "black-box" limitation of standard CNNs. By computing the gradients of the final convolutional layer (e.g., `block5_conv3`), the system dynamically generates Class Activation Heatmaps in real-time.
-* **Enhancing Clinical Trust**: Visually highlights the exact lung opacities driving the AI's "Pneumonia" prediction with red overlays. This provides radiologists with an intuitive second opinion for cross-validation and ensures the model is learning true pathological features rather than spurious correlations.
-* **New Tech Stack**: OpenCV (Color mapping and channel processing), Matplotlib.
 
 > 💡 **Developer's Reflection**
 >
@@ -147,7 +147,7 @@ In the initial phase (v1.0), this demo utilized a lightweight pre-trained model 
 
 This refactoring not only enhanced the demo's accuracy but also deepened my foundational understanding of engineering and deploying AI algorithms in practical medical scenarios.
 
-Reflection on v2.1: After pure end-to-end evaluation, I realized the biggest hurdle for medical AI is the "trust gap". Integrating Grad-CAM was a proactive step toward clinical viability. Seeing the heatmaps accurately highlight lung opacities rather than peripheral image markers gave me more confidence in the model's robustness than merely achieving a 90% AUC.
+> Reflection on v2.1: After pure end-to-end evaluation, I realized the biggest hurdle for medical AI is the "trust gap". Integrating Grad-CAM was a proactive step toward clinical viability. Seeing the heatmaps accurately highlight lung opacities rather than peripheral image markers gave me more confidence in the model's robustness than merely achieving a 90% AUC.
 
 ![ROC Curve and AUC](assets/roc_curve.png)
 
