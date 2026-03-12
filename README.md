@@ -1,15 +1,3 @@
----
-title: Chest X-ray Pneumonia Assistant
-emoji: 🫁
-colorFrom: blue
-colorTo: purple
-sdk: streamlit
-sdk_version: "1.36.0"
-python_version: "3.10"
-app_file: app.py
-pinned: false
----
-
 # Chest X-ray Pneumonia Assistant 🫁
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Live_Demo-blue)](https://huggingface.co/spaces/krischan-ai/Chest-Xray-Pneumonia-Assistant)
